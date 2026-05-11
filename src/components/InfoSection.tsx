@@ -130,7 +130,7 @@ export default function InfoSection() {
           </div>
 
           {/* Card 4 — stats */}
-          <div ref={statsRef as React.RefObject<HTMLDivElement>} style={card(3)} className="md:col-span-4">
+          <div id="resultados" ref={statsRef as React.RefObject<HTMLDivElement>} style={card(3)} className="md:col-span-4">
             <StatCard isVisible={statsVisible} />
           </div>
         </div>

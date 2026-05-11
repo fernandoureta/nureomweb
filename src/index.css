@@ -123,6 +123,12 @@ footer {
   border-radius: inherit;
 }
 
+/* ── Scroll offset para navbar fija (80px) ──────── */
+section[id],
+div[id] {
+  scroll-margin-top: 80px;
+}
+
 /* ── Dark mode toggle icon swap ─────────────────── */
 @keyframes icon-in {
   from { opacity: 0; transform: rotate(-30deg) scale(0.7); }

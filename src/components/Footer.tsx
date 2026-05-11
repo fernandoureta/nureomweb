@@ -1,7 +1,19 @@
 import { useTheme } from '../context/ThemeContext'
 
-const productLinks = ['Cómo funciona', 'Resultados', 'Garantía', 'Precios']
-const companyLinks = ['Agendar demo', 'Contacto', 'Términos', 'Privacidad']
+const DEMO_URL = 'https://cal.com/fernando-ureta-7nzeoh/demo-nureom'
+
+const productLinks = [
+  { label: 'Cómo funciona', href: '#como-funciona', external: false },
+  { label: 'Resultados',    href: '#resultados',    external: false },
+  { label: 'Garantía',      href: '#precios',       external: false },
+  { label: 'Precios',       href: '#precios',       external: false },
+]
+const companyLinks = [
+  { label: 'Agendar demo', href: DEMO_URL,    external: true },
+  { label: 'Contacto',     href: DEMO_URL,    external: true },
+  { label: 'Términos',     href: '#',         external: false },
+  { label: 'Privacidad',   href: '#',         external: false },
+]
 
 export default function Footer() {
   const { isDark } = useTheme()
@@ -38,14 +50,20 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col gap-3">
               {productLinks.map((link) => (
-                <li key={link}>
+                <li key={link.label}>
                   <a
-                    href="#"
+                    href={link.href}
+                    onClick={(e) => {
+                      if (!link.external && link.href !== '#') {
+                        e.preventDefault()
+                        document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' })
+                      }
+                    }}
                     style={{ color: 'var(--fg-mid)', fontSize: '0.875rem', fontWeight: 400, textDecoration: 'none', transition: 'color 200ms ease' }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--fg)')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-mid)')}
                   >
-                    {link}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -59,14 +77,16 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col gap-3">
               {companyLinks.map((link) => (
-                <li key={link}>
+                <li key={link.label}>
                   <a
-                    href="#"
+                    href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     style={{ color: 'var(--fg-mid)', fontSize: '0.875rem', fontWeight: 400, textDecoration: 'none', transition: 'color 200ms ease' }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--fg)')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-mid)')}
                   >
-                    {link}
+                    {link.label}
                   </a>
                 </li>
               ))}

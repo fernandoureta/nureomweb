@@ -1,9 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
-import { ArrowRight } from 'lucide-react'
 import { useCounter } from '../hooks/useCounter'
 import { useSectionReveal } from '../hooks/useSectionReveal'
+import GradientButton from './GradientButton'
 
-const DEMO_URL = 'https://cal.com/fernando-ureta-7nzeoh/demo-nureom'
 
 function AnimatedPrice({ isActive }: { isActive: boolean }) {
   const val = useCounter(297, 900, isActive)
@@ -73,18 +72,7 @@ export default function GarantiaSection() {
             {/* Derecha */}
             <div className="md:col-span-5 flex flex-col gap-6 md:items-start">
               <AnimatedPrice isActive={isActive} />
-              <a
-                href={DEMO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 bg-[#0047FF] text-white rounded-full px-6 py-3.5 hover:bg-white hover:text-[#0047FF] btn-glow-blue"
-                style={{ fontWeight: 500, transition: 'background 280ms cubic-bezier(0.16,1,0.3,1), color 280ms ease', textDecoration: 'none' }}
-              >
-                <span className="text-base">Activar mi clínica</span>
-                <span className="w-7 h-7 rounded-full bg-white flex items-center justify-center group-hover:bg-[#0047FF]" style={{ transition: 'background 280ms ease' }}>
-                  <ArrowRight size={14} className="text-[#0047FF] group-hover:text-white" style={{ transition: 'color 280ms ease' }} />
-                </span>
-              </a>
+              <GradientButton label="Activar mi clínica" />
               <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.78rem', fontWeight: 400 }}>
                 Setup en 48h · Cancelas cuando quieras
               </p>

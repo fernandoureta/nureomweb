@@ -49,11 +49,14 @@ export default function GarantiaSection() {
         <div
           ref={cardRef}
           className="relative rounded-3xl overflow-hidden"
-          style={{ background: '#04102B', padding: 'clamp(3rem,6vw,5rem)' }}
+          style={{ padding: 'clamp(3rem,6vw,5rem)', border: '1px solid rgba(0,71,255,0.18)' }}
         >
-          {/* Halos */}
-          <div className="absolute pointer-events-none" style={{ top: '-18%', right: '-8%', width: '500px', height: '500px', background: 'rgba(0,71,255,0.22)', filter: 'blur(90px)', borderRadius: '50%', zIndex: 0 }} />
-          <div className="absolute pointer-events-none" style={{ bottom: '-20%', left: '-6%', width: '320px', height: '320px', background: 'rgba(127,163,255,0.08)', filter: 'blur(80px)', borderRadius: '50%', zIndex: 0 }} />
+          {/* Blobs animados */}
+          <div className="card-blob" style={{ top: '50%', left: '50%', width: '480px', height: '480px', backgroundColor: '#0047FF', filter: 'blur(80px)', opacity: 0.85, animationDuration: '5s', zIndex: 0 }} />
+          <div className="card-blob" style={{ top: '25%', left: '20%', width: '300px', height: '300px', backgroundColor: '#3A6FFF', filter: 'blur(65px)', opacity: 0.6, animationDuration: '7s', animationDelay: '-3s', zIndex: 0 }} />
+
+          {/* Overlay oscuro glass */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'rgba(4,16,43,0.86)', zIndex: 1 }} />
 
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
             {/* Izquierda */}

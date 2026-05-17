@@ -1,4 +1,5 @@
 import { ThemeProvider } from './context/ThemeContext'
+import SpotlightCursor from './components/SpotlightCursor'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import InfoSection from './components/InfoSection'
@@ -10,6 +11,7 @@ import Footer from './components/Footer'
 export default function App() {
   return (
     <ThemeProvider>
+      <SpotlightCursor />
       <div style={{ background: 'var(--bg)', minHeight: '100vh', transition: 'background-color 380ms ease' }}>
         {/* Hero — full viewport, con marco exterior */}
         <div className="relative" style={{ height: '100vh', padding: '0.75rem' }}>

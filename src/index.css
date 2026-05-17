@@ -6,6 +6,9 @@
 :root {
   --bg:       #F4F6FB;
   --fg:       #04102B;
+  /* Spotlight cursor — se mueve desde JS */
+  --cx: -600px;
+  --cy: -600px;
   --fg-hi:    rgba(4,16,43,0.70);
   --fg-mid:   rgba(4,16,43,0.60);
   --fg-low:   rgba(4,16,43,0.40);
@@ -121,6 +124,92 @@ footer {
   pointer-events: none;
   z-index: 5;
   border-radius: inherit;
+}
+
+/* ── Spotlight cursor ───────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    700px circle at var(--cx) var(--cy),
+    rgba(0, 71, 255, 0.055),
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 9998;
+  transition: background 0.08s ease;
+}
+
+/* ── Glow pulsante — botón CTA hero (blanco) ────── */
+@keyframes glow-white {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0   rgba(255,255,255,0.00),
+      0 4px 20px rgba(255,255,255,0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 0 5px rgba(255,255,255,0.07),
+      0 4px 32px rgba(255,255,255,0.20);
+  }
+}
+.btn-glow-white {
+  animation: glow-white 3s ease-in-out infinite;
+}
+
+/* ── Glow pulsante — botón CTA azul de marca ────── */
+@keyframes glow-blue {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0   rgba(0,71,255,0.00),
+      0 4px 20px rgba(0,71,255,0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(0,71,255,0.10),
+      0 4px 36px rgba(0,71,255,0.35);
+  }
+}
+.btn-glow-blue {
+  animation: glow-blue 2.8s ease-in-out infinite;
+}
+
+/* ── Borde glow animado en cards navy ───────────── */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spin-border {
+  to { --border-angle: 360deg; }
+}
+
+.card-glow-border {
+  position: relative;
+  isolation: isolate;
+}
+.card-glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0%,
+    transparent 30%,
+    #0047FF      50%,
+    #7FA3FF      60%,
+    transparent  70%,
+    transparent  100%
+  );
+  animation: spin-border 3.5s linear infinite;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  z-index: -1;
+}
+.card-glow-border:hover::before {
+  opacity: 1;
 }
 
 /* ── Scroll offset para navbar fija (80px) ──────── */

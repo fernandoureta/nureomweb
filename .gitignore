@@ -23,6 +23,11 @@ dist-ssr/
 .DS_Store
 Thumbs.db
 
+# Archivos sueltos en raíz
+*.exe
+descarga.jpg
+"fondo precio.png"
+
 # Logs
 *.log
 npm-debug.log*

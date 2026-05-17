@@ -104,7 +104,7 @@ export default function InfoSection() {
           </div>
 
           {/* Card 2 — navy */}
-          <div className="rounded-2xl p-10 flex flex-col justify-between card-lift card-lift-dark" style={{ background: '#04102B', minHeight: '320px', ...card(1) }}>
+          <div className="rounded-2xl p-10 flex flex-col justify-between card-lift card-lift-dark card-glow-border" style={{ background: '#04102B', minHeight: '320px', ...card(1) }}>
             <Sparkles size={20} className="text-white/35" />
             <div>
               <h3 style={{ fontSize: 'clamp(1.35rem,1.9vw,1.75rem)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#fff', marginBottom: '0.9rem' }}>
@@ -117,7 +117,7 @@ export default function InfoSection() {
           </div>
 
           {/* Card 3 — navy */}
-          <div className="rounded-2xl p-10 flex flex-col justify-between card-lift card-lift-dark" style={{ background: '#04102B', minHeight: '320px', ...card(2) }}>
+          <div className="rounded-2xl p-10 flex flex-col justify-between card-lift card-lift-dark card-glow-border" style={{ background: '#04102B', minHeight: '320px', ...card(2) }}>
             <Infinity size={20} className="text-white/35" />
             <div>
               <h3 style={{ fontSize: 'clamp(1.35rem,1.9vw,1.75rem)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#fff', marginBottom: '0.9rem' }}>

@@ -168,7 +168,7 @@ export default function HeroSection() {
 
             {/* CTA */}
             <div
-              className="w-fit"
+              className="w-fit btn-glow-white rounded-full"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? 'translateY(0)' : 'translateY(20px)',

@@ -77,7 +77,7 @@ export default function GarantiaSection() {
                 href={DEMO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 bg-[#0047FF] text-white rounded-full px-6 py-3.5 hover:bg-white hover:text-[#0047FF]"
+                className="group inline-flex items-center gap-3 bg-[#0047FF] text-white rounded-full px-6 py-3.5 hover:bg-white hover:text-[#0047FF] btn-glow-blue"
                 style={{ fontWeight: 500, transition: 'background 280ms cubic-bezier(0.16,1,0.3,1), color 280ms ease', textDecoration: 'none' }}
               >
                 <span className="text-base">Activar mi clínica</span>

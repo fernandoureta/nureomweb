@@ -16,25 +16,27 @@ interface Props {
 }
 
 export default function GradientButton({ label = 'Activar mi clínica', href = DEMO_URL }: Props) {
+  const open = () => window.open(href, '_blank', 'noopener,noreferrer')
   return (
     <div
-      className="gbtn-wrapper"
-      onClick={() => window.open(href, '_blank', 'noopener,noreferrer')}
-      style={{ cursor: 'pointer' }}
+      className="gbtn-outer"
+      onClick={open}
       role="link"
       tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && window.open(href, '_blank', 'noopener,noreferrer')}
+      onKeyDown={(e) => e.key === 'Enter' && open()}
     >
-      <div className="gbtn-light" />
-      {LAYERS.map((l, i) => (
-        <div
-          key={i}
-          className="gbtn-layer"
-          style={{ animationDelay: l.delay, animationDuration: l.duration }}
-        />
-      ))}
-      <button className="gbtn-inner" tabIndex={-1}>{label}</button>
-      <div className="gbtn-text">{label}</div>
+      <div className="gbtn-wrapper">
+        <div className="gbtn-light" />
+        {LAYERS.map((l, i) => (
+          <div
+            key={i}
+            className="gbtn-layer"
+            style={{ animationDelay: l.delay, animationDuration: l.duration }}
+          />
+        ))}
+        <button className="gbtn-inner" tabIndex={-1}>{label}</button>
+        <div className="gbtn-text">{label}</div>
+      </div>
     </div>
   )
 }

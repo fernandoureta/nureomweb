@@ -228,26 +228,32 @@ div[id] {
 }
 
 /* ── Gradient CTA Button ────────────────────────── */
+
+/* Outer: maneja borde + radio + clip — SIN filter para que iOS no rompa el border-radius */
+.gbtn-outer {
+  display: inline-flex;
+  border: 2px solid rgba(0,71,255,0.55);
+  border-radius: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Inner: lleva el filter + layout */
 .gbtn-wrapper {
-  --rad: 30px;
-  --color-wrapper-border: rgba(0,71,255,0.55);
-  --color-btn-bg:         #04102B;
-  --color-btn-inset:      rgba(0,71,255,0.45);
-  --color-layer-a:        #fff;
-  --color-layer-b:        #0047FF;
+  --color-btn-bg:    #04102B;
+  --color-btn-inset: rgba(0,71,255,0.45);
+  --color-layer-a:   #fff;
+  --color-layer-b:   #0047FF;
 
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  border: 2px solid var(--color-wrapper-border);
-  border-radius: var(--rad);
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   filter: saturate(0.6) brightness(1.55);
-  user-select: none;
 }
 
 .gbtn-inner {
@@ -255,7 +261,7 @@ div[id] {
   z-index: -1;
   padding: 13px 38px;
   border: none;
-  border-radius: var(--rad);
+  border-radius: 30px;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -307,7 +313,7 @@ div[id] {
   pointer-events: none;
   z-index: 2;
   padding: 13px 38px;
-  border-radius: var(--rad);
+  border-radius: 30px;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;

@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { useCounter } from '../hooks/useCounter'
 import { useSectionReveal } from '../hooks/useSectionReveal'
-import GradientButton from './GradientButton'
+import PearlButton from './PearlButton'
 
 
 function AnimatedPrice({ isActive }: { isActive: boolean }) {
@@ -75,7 +75,7 @@ export default function GarantiaSection() {
             {/* Derecha */}
             <div className="md:col-span-5 flex flex-col gap-6 md:items-start">
               <AnimatedPrice isActive={isActive} />
-              <GradientButton label="Activar mi clínica" />
+              <PearlButton label="Activar mi clínica" />
               <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.78rem', fontWeight: 400 }}>
                 Setup en 48h · Cancelas cuando quieras
               </p>

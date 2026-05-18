@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import ArrowButton from './ArrowButton'
+import PearlButton from './PearlButton'
 
 const techStack = [
   { name: 'Claude API',        font: '"Plus Jakarta Sans", system-ui, sans-serif', weight: 600, tracking: '-0.01em', size: '13px' },
@@ -168,14 +168,14 @@ export default function HeroSection() {
 
             {/* CTA */}
             <div
-              className="w-fit btn-glow-white rounded-full"
+              className="w-fit"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? 'translateY(0)' : 'translateY(20px)',
                 transition: 'opacity 700ms ease 860ms, transform 700ms cubic-bezier(0.16,1,0.3,1) 860ms',
               }}
             >
-              <ArrowButton label="Agendar demo de 15 min" variant="light-on-dark" />
+              <PearlButton label="Agendar demo de 15 min" />
             </div>
           </div>
         </div>

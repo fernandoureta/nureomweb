@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { useTheme } from '../context/ThemeContext'
+import PolicyModal from './PolicyModal'
 
 const DEMO_URL = 'https://cal.com/fernando-ureta-7nzeoh/demo-nureom'
 
@@ -8,17 +10,15 @@ const productLinks = [
   { label: 'Garantía',      href: '#precios',       external: false },
   { label: 'Precios',       href: '#precios',       external: false },
 ]
-const companyLinks = [
-  { label: 'Agendar demo', href: DEMO_URL,    external: true },
-  { label: 'Contacto',     href: DEMO_URL,    external: true },
-  { label: 'Términos',     href: '#',         external: false },
-  { label: 'Privacidad',   href: '#',         external: false },
-]
+
+const linkStyle = { color: 'var(--fg-mid)', fontSize: '0.875rem', fontWeight: 400, textDecoration: 'none', transition: 'color 200ms ease', cursor: 'pointer' } as const
 
 export default function Footer() {
   const { isDark } = useTheme()
+  const [modal, setModal] = useState<'terms' | 'privacy' | null>(null)
 
   return (
+    <>
     <footer className="px-6 pt-16 pb-8" style={{ background: 'var(--bg)', borderTop: '1px solid var(--border-2)' }}>
       <div className="max-w-8xl mx-auto">
 
@@ -76,18 +76,21 @@ export default function Footer() {
               Empresa
             </p>
             <ul className="flex flex-col gap-3">
-              {companyLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target={link.external ? '_blank' : undefined}
-                    rel={link.external ? 'noopener noreferrer' : undefined}
-                    style={{ color: 'var(--fg-mid)', fontSize: '0.875rem', fontWeight: 400, textDecoration: 'none', transition: 'color 200ms ease' }}
+              {[
+                { label: 'Agendar demo', action: () => window.open(DEMO_URL, '_blank', 'noopener,noreferrer') },
+                { label: 'Contacto',     action: () => window.open(DEMO_URL, '_blank', 'noopener,noreferrer') },
+                { label: 'Términos',     action: () => setModal('terms') },
+                { label: 'Privacidad',   action: () => setModal('privacy') },
+              ].map(({ label, action }) => (
+                <li key={label}>
+                  <button
+                    onClick={action}
+                    style={linkStyle}
                     onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--fg)')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-mid)')}
                   >
-                    {link.label}
-                  </a>
+                    {label}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -108,5 +111,8 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+
+    {modal && <PolicyModal type={modal} onClose={() => setModal(null)} />}
+  </>
   )
 }

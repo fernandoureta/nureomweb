@@ -7,6 +7,7 @@ import ClinicasSection from './components/ClinicasSection'
 import ComoFuncionaSection from './components/ComoFuncionaSection'
 import GarantiaSection from './components/GarantiaSection'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <GarantiaSection />
         <Footer />
       </div>
+      <WhatsAppButton />
     </ThemeProvider>
   )
 }

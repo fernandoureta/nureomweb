@@ -240,8 +240,7 @@ div[id] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  overflow: clip;
-  overflow-clip-margin: 4px;
+  overflow: hidden;
   border: 2px solid var(--color-wrapper-border);
   border-radius: var(--rad);
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;

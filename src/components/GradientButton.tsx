@@ -19,24 +19,22 @@ export default function GradientButton({ label = 'Activar mi clínica', href = D
   const open = () => window.open(href, '_blank', 'noopener,noreferrer')
   return (
     <div
-      className="gbtn-outer"
+      className="gbtn-wrapper"
       onClick={open}
       role="link"
       tabIndex={0}
       onKeyDown={(e) => e.key === 'Enter' && open()}
     >
-      <div className="gbtn-wrapper">
-        <div className="gbtn-light" />
-        {LAYERS.map((l, i) => (
-          <div
-            key={i}
-            className="gbtn-layer"
-            style={{ animationDelay: l.delay, animationDuration: l.duration }}
-          />
-        ))}
-        <button className="gbtn-inner" tabIndex={-1}>{label}</button>
-        <div className="gbtn-text">{label}</div>
-      </div>
+      <div className="gbtn-light" />
+      {LAYERS.map((l, i) => (
+        <div
+          key={i}
+          className="gbtn-layer"
+          style={{ animationDelay: l.delay, animationDuration: l.duration }}
+        />
+      ))}
+      <button className="gbtn-inner" tabIndex={-1}>{label}</button>
+      <div className="gbtn-text">{label}</div>
     </div>
   )
 }

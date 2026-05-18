@@ -228,32 +228,26 @@ div[id] {
 }
 
 /* ── Gradient CTA Button ────────────────────────── */
-
-/* Outer: maneja borde + radio + clip — SIN filter para que iOS no rompa el border-radius */
-.gbtn-outer {
-  display: inline-flex;
-  border: 2px solid rgba(0,71,255,0.55);
-  border-radius: 30px;
-  overflow: hidden;
-  cursor: pointer;
-  user-select: none;
-}
-
-/* Inner: lleva el filter + layout */
 .gbtn-wrapper {
-  --color-btn-bg:    #04102B;
-  --color-btn-inset: rgba(0,71,255,0.45);
-  --color-layer-a:   #fff;
-  --color-layer-b:   #0047FF;
+  --color-btn-bg:  #04102B;
+  --color-layer-a: #fff;
+  --color-layer-b: #0047FF;
 
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border: 2px solid rgba(0,71,255,0.55);
+  border-radius: 30px;
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   filter: saturate(0.6) brightness(1.55);
+  cursor: pointer;
+  user-select: none;
+  /* Fix iOS Safari: fuerza un layer de compositing que respeta border-radius con filter */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .gbtn-inner {

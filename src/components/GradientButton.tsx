@@ -33,8 +33,7 @@ export default function GradientButton({ label = 'Activar mi clínica', href = D
           style={{ animationDelay: l.delay, animationDuration: l.duration }}
         />
       ))}
-      <button className="gbtn-inner" tabIndex={-1}>{label}</button>
-      <div className="gbtn-text">{label}</div>
+      <span className="gbtn-text">{label}</span>
     </div>
   )
 }

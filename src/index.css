@@ -229,45 +229,23 @@ div[id] {
 
 /* ── Gradient CTA Button ────────────────────────── */
 .gbtn-wrapper {
-  --color-btn-bg:  #04102B;
-  --color-layer-a: #fff;
-  --color-layer-b: #0047FF;
-
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 2px solid rgba(0,71,255,0.55);
+  border: 2px solid rgba(0,71,255,0.5);
   border-radius: 30px;
+  background: #ffffff;
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  filter: saturate(0.6) brightness(1.55);
   cursor: pointer;
   user-select: none;
-  /* Fix iOS Safari: fuerza un layer de compositing que respeta border-radius con filter */
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
-.gbtn-inner {
-  position: relative;
-  z-index: -1;
-  padding: 13px 38px;
-  border: none;
-  border-radius: 30px;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: 0.05rem;
-  color: #04102B;
-  background-color: var(--color-btn-bg);
-  text-shadow: 0 1px 1px rgba(255,255,255,0.25);
-  cursor: pointer;
-  mix-blend-mode: color-dodge;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
+/* Capas de gradiente rotantes — semi-transparentes sobre el fondo blanco */
 .gbtn-layer {
   position: absolute;
   pointer-events: none;
@@ -276,24 +254,15 @@ div[id] {
   aspect-ratio: 1;
   background: radial-gradient(
     ellipse at 65% 180%,
-    var(--color-layer-a),
-    var(--color-layer-b),
-    var(--color-layer-a),
-    var(--color-layer-b),
-    var(--color-layer-a),
-    var(--color-layer-b),
-    var(--color-layer-a),
-    var(--color-layer-b),
-    var(--color-layer-a),
-    var(--color-layer-b),
-    var(--color-layer-a)
+    rgba(255,255,255,0),
+    rgba(0,71,255,0.28),
+    rgba(255,255,255,0),
+    rgba(0,71,255,0.22),
+    rgba(255,255,255,0),
+    rgba(127,163,255,0.3),
+    rgba(255,255,255,0)
   );
-  mix-blend-mode: difference;
   animation: gbtn-rotate 8s linear infinite;
-}
-
-.gbtn-layer:last-of-type {
-  mix-blend-mode: color-dodge;
 }
 
 @keyframes gbtn-rotate {
@@ -301,50 +270,40 @@ div[id] {
   100% { transform: rotate(360deg); }
 }
 
+/* Texto — encima de todo, sin blend modes */
 .gbtn-text {
-  position: absolute;
-  pointer-events: none;
-  z-index: 2;
+  position: relative;
+  z-index: 10;
   padding: 13px 38px;
-  border-radius: 30px;
+  color: #04102B;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   letter-spacing: 0.05rem;
-  color: #04102B;
-  text-shadow: 0 1px 1px rgba(255,255,255,0.3);
-  box-shadow:
-    inset 0 -4px 4px 0 rgba(0,0,0,0.25),
-    inset 0  4px 4px 0 rgba(255,255,255,0.22);
-  transition: transform 0.3s ease;
-  animation: gbtn-pulse-text 5s ease infinite;
+  transition: transform 0.25s ease;
+  white-space: nowrap;
 }
 
-.gbtn-wrapper:hover .gbtn-text  { transform: scale(1.07); }
-.gbtn-wrapper:hover .gbtn-inner { color: transparent; text-shadow: none; }
-.gbtn-wrapper:active .gbtn-text { transform: scale(0.95); }
-.gbtn-wrapper:active .gbtn-inner { color: transparent; text-shadow: none; }
+.gbtn-wrapper:hover  .gbtn-text { transform: scale(1.05); }
+.gbtn-wrapper:active .gbtn-text { transform: scale(0.96); }
 
+/* Brillo superior pulsante */
 .gbtn-light {
   position: absolute;
   pointer-events: none;
-  z-index: 1;
+  z-index: 5;
+  top: 0;
   border-radius: 50px;
-  width: 80%;
-  height: 1.9rem;
-  background-color: rgba(255,255,255,0.28);
-  filter: blur(5px);
+  width: 75%;
+  height: 45%;
+  background: rgba(255,255,255,0.7);
+  filter: blur(8px);
   animation: gbtn-pulse 3s ease-in-out infinite;
 }
 
 @keyframes gbtn-pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.1; }
-}
-
-@keyframes gbtn-pulse-text {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.55; }
+  0%, 100% { opacity: 0.9; }
+  50%       { opacity: 0.2; }
 }
 
 /* ── Blob bounce (Garantia card) ────────────────── */
